@@ -17,21 +17,21 @@ function makePromiseArray() {
   return arr;
 }
 
-let arrOfPromises = makePromiseArray();
-let trueCount = 0;
-let falseCount = 0;
+const arrOfPromises = makePromiseArray();
 
 Promise.all(arrOfPromises).then(function (values) {
   console.log(values);
-  trueCount = ((values.filter(val => val === false)).length);
-  falseCount = ((values.filter(val => val === true)).length);
+  const trueCount = ((values.filter(val => val === false)).length);
+  const falseCount = ((values.filter(val => val === true)).length);
   console.log('FALSE VALUES: ', trueCount);
   console.log('TRUE VALUES: ', falseCount);
   results.response = values;
   results._true = trueCount;
   results._false = falseCount;
   console.log(results);
+  localStorage.setItem('any', JSON.stringify(results));
 });
+
 
 
 var results = {
